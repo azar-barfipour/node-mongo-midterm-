@@ -1,0 +1,32 @@
+<%- include("_header") %>
+<div class="table-responsive-sm">
+  <div class="table table-hover">
+        <div class="mt-4 mb-4">
+          <a href="/create" class="btn btn-sm btn-dark">Create your post</a>
+        </div>
+    <tbody>
+      <% for(const todo of model){ %>
+      <div>
+        <div class="mt-4 mb-2"><%= todo.Title %></div>
+        <div class="mb-2">
+        <a href="/edit/<%= todo.ID %>" class="btn btn-sm btn-dark">Edit</a>
+        <a 
+          href="/delete/<%= todo.ID %>?_method=DELETE"
+          class="btn btn-sm btn-danger"
+          >x</a
+        >
+        <a href="/comment/<%= todo.ID %>" class="btn btn-sm btn-dark">add comment</a>
+        <% for(const comment of comments){ %>
+            <%if(comment.ID  ){%>
+
+                <div class="mt-4 mb-2"><%= comment.Title %></div>
+           <% } %>
+            <% } %>
+        <% } %>
+    </div>
+      </div>
+    </tbody>
+  </table>
+</div>
+
+<%- include("_footer") %>
